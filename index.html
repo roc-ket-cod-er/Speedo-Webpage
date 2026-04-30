@@ -140,7 +140,7 @@ async function fetchData() {
         updateGauge(speed, batText);
 
         document.getElementById("status").textContent =
-            "Last updated: " + new Date().toLocaleTimeString() + " Data from" + new Date(latest.created_at).toLocaleTimeString();
+            "Last updated: " + new Date().toLocaleTimeString() + "  Data from: " + new Date(latest.created_at).toLocaleTimeString();
 
     } catch (err) {
         document.getElementById("status").textContent =
