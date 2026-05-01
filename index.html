@@ -134,13 +134,13 @@ async function fetchData() {
         const parts = latest.value.replace(/\r\n/g, "\n").split(" ");
         const speedText = parts[1] || "0km/h";
         const batText = parts[0] || "";
-
+        const update_date = new Date(latest.created_at);
         const speed = parseFloat(speedText.replace("km/h", "")) || 0;
 
         updateGauge(speed, batText);
 
         document.getElementById("status").textContent =
-            "Last checked: " + new Date().toLocaleTimeString('en-US', { hour12: true }) + ".\tData received at: " + new Date(latest.created_at).toLocaleTimeString('en-US', { hour12: true }) + " (" + new Date(latest.created_at).toLocaleString('en-CA', { day: '2-digit', month: 'long' }) + ")";
+            "Last checked: " + new Date().toLocaleTimeString('en-US', { hour12: true }) + " " + String(Math.max((new Date() - update_date)/1000, 0));
 
     } catch (err) {
         document.getElementById("status").textContent =
