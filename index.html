@@ -149,7 +149,7 @@ async function fetchData() {
                 "Last checked: " + new Date().toLocaleTimeString('en-US', { hour12: true }) + " (Updated " + String(Math.floor(timediff/60)) + "m " + String(timediff%60) + "s ago)";
         } else if (timediff < 86400) {
             document.getElementById("status").textContent =
-                "Last checked: " + new Date().toLocaleTimeString('en-US', { hour12: true }) + " (Updated " + String(Math.floor(timediff/3600) + "h " + String(Math.floor(timediff/60)) + "m " + String(timediff%60) + "s ago)";
+                "Last checked: " + new Date().toLocaleTimeString('en-US', { hour12: true }) + " (Updated " + String(Math.floor(timediff/3600)) + "h " + String(Math.floor(timediff/60)) + "m " + String(timediff%60) + "s ago)";
         } else {
             document.getElementById("status").textContent =
                 "Last checked: " + new Date().toLocaleTimeString('en-US', { hour12: true }) + " (Updated over a day ago)";
