@@ -128,9 +128,6 @@ async function fetchData() {
 
         const latest = data[0];
 
-        // Example:
-        // "9/10s 0.7km/h 0.95 hdop 35% (3460 mV) waited: 30s"
-
         const parts = latest.value.replace(/\r\n/g, "\n").split(" ");
         const speedText = parts[1] || "0km/h";
         const batText = parts[0] || "";
