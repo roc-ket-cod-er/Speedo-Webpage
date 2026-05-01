@@ -143,16 +143,16 @@ async function fetchData() {
 
         if (timediff < 60) {
             document.getElementById("status").textContent =
-                "Last checked: " + new Date().toLocaleTimeString('en-US', { hour12: true }) + " (Updated " + String(timediff) + "s ago)";
+                "Last checked: " + new Date().toLocaleTimeString('en-US', { hour12: true }) + " (Data from " + String(timediff) + "s ago)";
         } else if (timediff < 3600) {
             document.getElementById("status").textContent =
-                "Last checked: " + new Date().toLocaleTimeString('en-US', { hour12: true }) + " (Updated " + String(Math.floor(timediff/60)) + "m " + String(timediff%60) + "s ago)";
+                "Last checked: " + new Date().toLocaleTimeString('en-US', { hour12: true }) + " (Data from " + String(Math.floor(timediff/60)) + "m " + String(timediff%60) + "s ago)";
         } else if (timediff < 86400) {
             document.getElementById("status").textContent =
-                "Last checked: " + new Date().toLocaleTimeString('en-US', { hour12: true }) + " (Updated " + String(Math.floor(timediff/3600)) + "h " + String(Math.floor(timediff/60)) + "m " + String(timediff%60) + "s ago)";
+                "Last checked: " + new Date().toLocaleTimeString('en-US', { hour12: true }) + " (Data from " + String(Math.floor(timediff/3600)) + "h " + String(Math.floor(timediff/60)) + "m " + String(timediff%60) + "s ago)";
         } else {
             document.getElementById("status").textContent =
-                "Last checked: " + new Date().toLocaleTimeString('en-US', { hour12: true }) + " (Updated over a day ago)";
+                "Last checked: " + new Date().toLocaleTimeString('en-US', { hour12: true }) + " (Data from over a day ago)";
         }
     
     } catch (err) {
