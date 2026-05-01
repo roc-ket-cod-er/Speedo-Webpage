@@ -137,11 +137,24 @@ async function fetchData() {
         const update_date = new Date(latest.created_at);
         const speed = parseFloat(speedText.replace("km/h", "")) || 0;
 
+        const timediff = Math.floor(Math.max((new Date() - update_date-500)/1000, 0));
+
         updateGauge(speed, batText);
 
-        document.getElementById("status").textContent =
-            "Last checked: " + new Date().toLocaleTimeString('en-US', { hour12: true }) + " (Updated " + String(Math.floor(Math.max((new Date() - update_date-500)/1000, 0))) + "s ago)";
-
+        if (timediff < 60) {
+            document.getElementById("status").textContent =
+                "Last checked: " + new Date().toLocaleTimeString('en-US', { hour12: true }) + " (Updated " + String(timediff) + "s ago)";
+        } else if (timediff < 3600) {
+            document.getElementById("status").textContent =
+                "Last checked: " + new Date().toLocaleTimeString('en-US', { hour12: true }) + " (Updated " + String(Math.floor(timediff/60)) + "m " + String(timediff%60) + "s ago)";
+        } else if (timediff < 86400) {
+            document.getElementById("status").textContent =
+                "Last checked: " + new Date().toLocaleTimeString('en-US', { hour12: true }) + " (Updated " + String(Math.floor(timediff/3600) + "h " + String(Math.floor(timediff/60)) + "m " + String(timediff%60) + "s ago)";
+        } else {
+            document.getElementById("status").textContent =
+                "Last checked: " + new Date().toLocaleTimeString('en-US', { hour12: true }) + " (Updated over a day ago)";
+        }
+    
     } catch (err) {
         document.getElementById("status").textContent =
             "Error fetching data";
