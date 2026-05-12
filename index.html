@@ -153,7 +153,7 @@ async function fetchData() {
         }
 
         document.getElementById("label").textContent =
-            parts;
+            parts.slice(2);
     
     } catch (err) {
         document.getElementById("status").textContent =
