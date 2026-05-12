@@ -96,7 +96,7 @@
     </div>
 
     <div class="value" id="value">-- km/h</div>
-    <div class="label">Speed (0–40 km/h)</div>
+    <div class="label" id="label">Speed (0–40 km/h)</div>
     <div class="status" id="status">Loading...</div>
 </div>
 
@@ -151,6 +151,10 @@ async function fetchData() {
             document.getElementById("status").textContent =
                 "Last checked: " + new Date().toLocaleTimeString('en-US', { hour12: true }) + " (Data from over a day ago)";
         }
+
+        document.getElementById("label").textContent =
+            parts[2];
+        console.error(err);
     
     } catch (err) {
         document.getElementById("status").textContent =
