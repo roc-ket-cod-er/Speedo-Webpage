@@ -130,7 +130,7 @@ async function fetchData() {
 
         const parts = latest.value.replace(/\r\n/g, "\n").split(" ");
         const speedText = parts[1] || "0km/h";
-        const batText = parts[0] ? parseFloat(parts[0]) * 1.05630252 : "";
+        const batText = Math.round((parseFloat(parts[0]) || 0) * 1.05630252 * 100) / 100;
         const update_date = new Date(latest.created_at);
         const speed = parseFloat(speedText.replace("km/h", "")) || 0;
 
